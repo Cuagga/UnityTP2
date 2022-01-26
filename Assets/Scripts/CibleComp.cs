@@ -23,6 +23,12 @@ namespace Controllers
             Instantiate(Cube, collision.contacts[0].point, Quaternion.FromToRotation(Vector3.up, Vector3.down)) ;
             Instantiate(Cible, GetRandomSpawnPosition(), GetRandomRotation());
         }
+        void OnControllerColliderHit(ControllerColliderHit col) {
+            if (col.collider.name == "cylinder")
+            {
+        col.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+              }
+        }
 
         private Vector3 GetRandomSpawnPosition()
         {
