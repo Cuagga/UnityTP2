@@ -17,12 +17,37 @@ public class Controls : MonoBehaviour
         Deplacement();
         Vise()
     }
+    
+    void Deplacement()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(-Vector3.right * Time.deltaTime * Speed);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * Speed);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(-Vector3.forward * Time.deltaTime * Speed);
+        }
+        
+        
+    }
+    
 
     private void Shot()
     {
         if (Input.GetButtonUp("Fire1"))
-            ballSpawnerController.SpawnBall();
+            ballSpawner.SpawnBall();
     }
+    
+    
 
 
 }
