@@ -15,7 +15,7 @@ public class Controls : MonoBehaviour
     {
         Shot();
         Deplacement();
-        Vise()
+        Vise();
     }
     
     void Deplacement()
