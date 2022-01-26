@@ -2,28 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CibleComp : MonoBehaviour
+namespace Controllers
 {
-    // Start is called before the first frame update
+    public class cibleComp : MonoBehaviour{
 
+        [SerializeField] private BoxCollider spawnZone = default;
+        [SerializeField] private GameObject Cube = default;
+        [SerializeField] private GameObject Cible = default;
+        private Bounds spawnBounds;
 
-    void onCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-        Instantiate(cube, collision.contact(0).point, Quaternion.FromToRotation(Vector3.up, contact.normal));
-        Instantiate(Cible, GetRandomSpawnPosition(), GetRandomRotation());
-    }
+        private void Awake()
+        {
+            spawnBounds = spawnZone.bounds;
+        }
 
-    private Vector3 GetRandomSpawnPosition()
-    {
-        return new Vector3(
-            Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-            Random.Range(spawnBounds.min.y, spawnBounds.max.y),
-            Random.Range(spawnBounds.min.z, spawnBounds.max.z));
-    }
+        void onCollisionEnter(Collision collision)
+        {
+            Destroy(gameObject);
+            Instantiate(Cube, collision.contacts[0].point, Quaternion.FromToRotation(Vector3.up, Vector3.down)) ;
+            Instantiate(Cible, GetRandomSpawnPosition(), GetRandomRotation());
+        }
 
-    private static Quaternion GetRandomRotation()
-    {
-        return Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        private Vector3 GetRandomSpawnPosition()
+        {
+            return new Vector3(
+                Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+                Random.Range(spawnBounds.min.y, spawnBounds.max.y),
+                Random.Range(spawnBounds.min.z, spawnBounds.max.z));
+        }
+
+        private static Quaternion GetRandomRotation()
+        {
+            return Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        }
     }
 }
