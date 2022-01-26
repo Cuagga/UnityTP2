@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class cibleComp : MonoBehaviour{
+    public class CibleComp : MonoBehaviour {
 
         [SerializeField] private BoxCollider spawnZone = default;
         [SerializeField] private GameObject Cube = default;
         [SerializeField] private GameObject Cible = default;
         private Bounds spawnBounds;
+
 
         private void Awake()
         {
