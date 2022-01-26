@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controls : MonoBehaviour
 {
     public float Speed=10f;
+    [SerializeField] private LineRenderer aimRenderer = default;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,12 @@ public class Controls : MonoBehaviour
     
     
 
+    private void Vise() {
+        aimRenderer.positionCount = 2;
+        Vector3 playerPosition = playerTransform.position;
+        Vector3[] linePositions = { playerPosition, playerPosition + playerTransform.forward * 100f };
+        aimRenderer.SetPositions(linePositions);
+    }
 
 }
 
