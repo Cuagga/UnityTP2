@@ -64,12 +64,7 @@ public class Controls : MonoBehaviour
     
     
 
-    private void Vise() {
-        aimRenderer.positionCount = 2;
-        Vector3 playerPosition = playerTransform.position;
-        Vector3[] linePositions = { playerPosition, playerPosition + playerTransform.forward * 100f };
-        aimRenderer.SetPositions(linePositions);
-    }
+
 
 }
 
