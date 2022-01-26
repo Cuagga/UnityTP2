@@ -9,6 +9,8 @@ public class Controls : MonoBehaviour
     public float rotationY;
     public float sensitivity = 5f;
     [SerializeField] private LineRenderer aimRenderer = default;
+    private Transform playerTransform;
+    
     // Start is called before the first frame update
     void Start()
     {
