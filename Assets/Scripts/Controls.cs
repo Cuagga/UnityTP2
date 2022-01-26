@@ -30,6 +30,10 @@ public class Controls : MonoBehaviour
         
         rotationX = Mathf.Clamp (rotationX, -90, 90);
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+        aimRenderer.positionCount = 2;
+        Vector3 playerPosition = playerTransform.position;
+        Vector3[] linePositions = { playerPosition, playerPosition + playerTransform.forward * 100f };
+        aimRenderer.SetPositions(linePositions);
     }
     
     
